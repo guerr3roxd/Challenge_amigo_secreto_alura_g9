@@ -5,9 +5,6 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/camilafernanda/amigo-secreto?color=%2304D361">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/camilafernanda/amigo-secreto">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
   <img src="https://img.shields.io/badge/STATUS-EN%20DESARROLLO-green">
 </p>
 
