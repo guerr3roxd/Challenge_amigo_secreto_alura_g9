@@ -115,13 +115,6 @@ Las contribuciones son siempre bienvenidas! Para contribuir:
 
 ---
 
-## 👨‍💻 Autores
-
-| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Tu Nombre</sub>](https://github.com/guerr3roxd) |
-| :---: |
-
----
-
 ## 🎓 Agradecimientos
 
 - **[Alura Latam](https://www.aluracursos.com/)** - Por proporcionar el contenido educativo y la estructura del desafío
