@@ -31,14 +31,6 @@ La aplicación fue desarrollada como parte del programa educativo de **Alura Lat
 
 ---
 
-## 🎮 Demostración
-
-![Demostración del proyecto](./assets/demo-amigo-secreto.gif)
-
-*Ejemplo de uso: agregando participantes y realizando el sorteo*
-
----
-
 ## 📁 Acceso al Proyecto
 
 Puedes acceder al código fuente del proyecto clonando este repositorio:
