@@ -99,6 +99,7 @@ amigo-secreto/
 - ✅ Verificación de campos vacíos
 - ✅ Validación de lista vacía antes del sorteo
 - ✅ Mensajes de error informativos
+- ✅ Validación de un minimo de 2 personas
 
 ---
 
@@ -116,14 +117,8 @@ Las contribuciones son siempre bienvenidas! Para contribuir:
 
 ## 👨‍💻 Autores
 
-| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Tu Nombre</sub>](https://github.com/tu-usuario) |
+| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Tu Nombre</sub>](https://github.com/guerr3roxd) |
 | :---: |
-
----
-
-## 📝 Licencia
-
-Este proyecto está bajo la licencia MIT. Vea el archivo [LICENSE](LICENSE) para más detalhes.
 
 ---
 
