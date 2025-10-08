@@ -9,21 +9,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <title>Amigo Secreto</title>
 </head>
-
 <body>
     <main class="main-content">
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
-                <span class="theme-icon sun">☀️</span>
-                <span class="theme-icon moon">🌙</span>
-            </button>
-
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <div class="slider round">
+                    <span class="sun">☀️</span>
+                    <span class="moon">🌙</span>
+                </div>
+            </label>
+        </div>
         <header class="header-banner">
             <h1 class="main-title">Amigo Secreto</h1>
             <img src="assets/amigo-secreto.png" alt="Imagen representativa de amigo secreto">
         </header>
         
         <section class="input-section">
-            <h2 class="section-title">Digite el nombre de sus amigos</h2>
+            <h2 class="section-title">Ingrese el nombre de sus amigos</h2>
             <div class="input-wrapper">
                 <input type="text" id="amigo" class="input-name" placeholder="Escribe un nombre">
                 <button class="button-add" onclick="agregarAmigo()">Añadir</button>
@@ -37,11 +40,13 @@
                     <img src="assets/play_circle_outline.png" alt="Ícono para sortear">
                     Sortear amigo
                 </button>
-                <button class="button-clear" onclick="vaciarLista()">🗑️ Vaciar Lista</button>
+                <button class="button-clear" onclick="vaciarLista()">
+                    <img src="assets/trash_circle_outline.png" alt="Ícono para sortear">
+                    Vaciar Lista
+                </button>
             </div>
         </section>
     </main>
-
-    <script src="app.js" defer></script>
+    <script src="app.js"></script>
 </body>
 </html>

@@ -1,352 +1,310 @@
-/* ============================
-   Variables de tema
-   ============================ */
 :root {
-  /* Colores modo claro */
-  --color-primary: #4B69FD;
-  --color-secondary: #FFF9EB;
-  --color-tertiary: #C4C4C4;
-  --color-button: #fe652b;
-  --color-button-hover: #e55720;
-  --color-text: #444444;
-  --color-white: #FFFFFF;
-  --color-bg-item: #FFF9EB;
-  --color-border: #000000;
-  --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-primary: #4B69FD;
+    --color-secondary: #FFF9EB;
+    --color-tertiary: #C4C4C4;
+    --color-button: #62C370;
+    --color-button-hover: #389446;
+    --color-text: #444444;
+    --color-white: #FFFFFF;
+    --color-bg-item: #FFF9EB;
+    --color-border: #000000;
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-button-draw: #009ddd;
+    --color-button-draw-hover: #0f4571;
+    --color-button-clear: #cc6666;
+    --color-button-clear-hover: #994d4d;
 }
 
-/* Tema oscuro controlado por data-theme */
 [data-theme="dark"] {
-  --color-primary: #2d3748;
-  --color-secondary: #1f2429;
-  --color-tertiary: #4a5568;
-  --color-button: #e53e3e;
-  --color-button-hover: #c53030;
-  --color-text: #edf2f7;
-  --color-white: #f7fafc;
-  --color-bg-item: #2a2e35;
-  --color-border: #718096;
-  --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-primary: #2d3748;
+    --color-secondary: #1f2429;
+    --color-tertiary: #4a5568;
+    --color-button: #8BAAAD;
+    --color-button-hover: #1C3738;
+    --color-text: #edf2f7;
+    --color-white: #f7fafc;
+    --color-bg-item: #2a2e35;
+    --color-border: #9D9FA1;
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-button-draw: #2A1E5C;
+    --color-button-draw-hover: #150F2E;
+    --color-button-clear: #AE1E2C;
+    --color-button-clear-hover: #8C1823;
 }
 
-/* ============================
-   Reset y transiciones
-   ============================ */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ============================
-   Body y contenido principal
-   ============================ */
 body {
-  height: 100vh;
-  background-color: var(--color-primary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Inter", sans-serif;
-  color: var(--color-text);
+    height: 100vh;
+    background-color: var(--color-primary);
+    font-family: "Inter", sans-serif;
+    color: var(--color-text);
 }
 
 .main-content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
 }
 
-/* ============================
-   Header y slider tema
-   ============================ */
-.header-banner {
-  flex: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 40px 0 0;
+.theme-switch-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
 }
 
 .theme-switch {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 0 30px; 
 }
-
 .theme-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
-  position: relative;
-  cursor: pointer;
-  background-color: #ccc;
-  border-radius: 34px;
-  width: 100%;
-  height: 100%;
-  transition: background-color 0.3s ease;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
 }
 
-.slider::before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  top: 4px;
-  background-color: white;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    z-index: 2;
 }
 
-input:checked + .slider {
-  background-color: var(--color-button);
+
+.sun, .moon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
 }
 
-input:checked + .slider::before {
-  transform: translateX(26px);
+.sun {
+    left: -30px; 
 }
 
-/* ============================
-   Sección de entrada
-   ============================ */
-.input-section {
-  flex: 60%;
-  background-color: var(--color-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: 64px 64px 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  width: 100%;
+.moon {
+    right: -30px;
 }
 
-/* ============================
-   Títulos
-   ============================ */
+input:not(:checked) ~ .slider .sun {
+    opacity: 1;
+}
+
+input:not(:checked) ~ .slider .moon {
+    opacity: 0.3; /* Semi-transparente cuando no está activo */
+}
+
+input:checked ~ .slider .sun {
+    opacity: 0.3; /* Semi-transparente cuando no está activo */
+}
+
+input:checked ~ .slider .moon {
+    opacity: 1;
+}
+
+.header-banner {
+    flex: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
 .main-title {
-  font-size: 48px;
-  font-family: "Merriweather", serif;
-  font-weight: 900;
-  font-style: italic;
-  color: var(--color-white);
+    font-size: 48px;
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.input-section {
+    flex: 60%;
+    background-color: var(--color-secondary);
+    border-radius: 64px 64px 0 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .section-title {
-  font-size: 36px;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin: 10px 0;
-  text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: var(--color-text);
 }
 
-/* ============================
-   Input y botón Añadir
-   ============================ */
 .input-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 600px;
-  margin-top: 20px;
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
 }
 
 .input-name {
-  flex: 1;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 2px solid #333;
-  border-right: none;
-  border-radius: 25px 0 0 25px;
-  font-family: "Inter", sans-serif;
-  background-color: var(--color-white);
-  color: var(--color-text);
-  box-shadow: 0 4px 8px var(--color-shadow);
-}
-
-.input-name::placeholder {
-  color: #666;
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid var(--color-border);
+    border-radius: 25px 0 0 25px;
+    font-size: 16px;
+    background-color: var(--color-white);
+    color: var(--color-text);
 }
 
 .button-add {
-  padding: 10px 20px;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  border: 2px solid #333;
-  border-radius: 0 25px 25px 0;
-  background-color: var(--color-tertiary);
-  color: var(--color-text);
-  cursor: pointer;
-  box-shadow: 0 4px 8px var(--color-shadow);
+    padding: 12px 30px;
+    background-color: var(--color-button);
+    color: var(--color-white);
+    border: none;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .button-add:hover {
-  background-color: #a1a1a1;
+    background-color: var(--color-button-hover);
 }
 
-/* ============================
-   Botones Sortear y Vaciar
-   ============================ */
+.name-list {
+    width: 100%;
+    max-width: 600px;
+    list-style: none;
+}
+
+.name-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    background-color: var(--color-bg-item);
+    border-radius: 25px;
+    box-shadow: 0 2px 4px var(--color-shadow);
+}
+
+.nombre-amigo {
+    flex-grow: 1;
+    margin-right: 16px;
+}
+
+.btn-eliminar {
+    background: none;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 4px;
+    min-width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-eliminar:hover {
+    color: var(--color-button-clear);
+}
+
 .button-container {
-  display: flex;
-  justify-content: center;
-  width: 300px;
-  margin-top: 20px;
-  gap: 10px;
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
 }
 
 .button-draw,
 .button-clear {
-  padding: 10px 40px;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  border: 2px solid #000;
-  border-radius: 25px;
-  box-shadow: 0 4px 8px var(--color-shadow);
-  cursor: pointer;
-  color: var(--color-white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--color-white);
+    width: 180px;
+    height: 64px;
 }
 
 .button-draw {
-  background-color: var(--color-button);
-  display: flex;
-  align-items: center;
-}
-
-.button-draw img {
-  margin-right: 10px;
-}
-
-.button-draw:hover {
-  background-color: var(--color-button-hover);
+    background-color: var(--color-button-draw);
 }
 
 .button-clear {
-  background-color: #dc3545;
+    background-color: var(--color-button-clear);
+}
+
+.button-draw:hover {
+    background-color: var(--color-button-draw-hover);
 }
 
 .button-clear:hover {
-  background-color: #b02a37;
-}
-
-/* ============================
-   Listas y ítems
-   ============================ */
-ul {
-  list-style-type: none;
-  color: var(--color-text);
-  font-family: "Inter", sans-serif;
-  font-size: 18px;
-  margin: 20px 0;
-}
-
-.name-list {
-  width: 100%;
-  max-width: 600px;
-  margin: 10px 0;
-  padding: 0;
+    background-color: var(--color-button-clear-hover);
 }
 
 .result-list {
-  margin-top: 15px;
-  color: #05DF05;
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
+    list-style: none;
 }
 
-/* ============================
-   Resultado del sorteo
-   ============================ */
-.result-list li {
-  color: var(--color-button);
+.resultado-sorteo {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-bg-item);
+    border-radius: 25px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px var(--color-shadow);
 }
 
-/* ============================
-   Dark mode overrides
-   ============================ */
-[data-theme="dark"] .input-section {
-  background-color: var(--color-secondary);
-  border-color: var(--color-border);
-}
-
-[data-theme="dark"] .input-name {
-  background-color: var(--color-bg-item);
-  color: var(--color-text);
-  border-color: var(--color-border);
-}
-
-[data-theme="dark"] .input-name::placeholder {
-  color: #a0aec0;
-}
-
-[data-theme="dark"] .button-add {
-  background-color: var(--color-button);
-  color: var(--color-white);
-  border-color: var(--color-border);
-}
-
-[data-theme="dark"] .button-add:hover {
-  background-color: var(--color-button-hover);
-}
-
-[data-theme="dark"] .button-draw {
-  background-color: var(--color-button);
-}
-
-[data-theme="dark"] .button-clear {
-  background-color: #c53030;
-}
-
-[data-theme="dark"] ul,
-[data-theme="dark"] .name-list {
-  color: var(--color-text);
-}
-
-[data-theme="dark"] .result-list {
-  color: #9AE6B4;
-}
-
-/* ============================
-   Responsive
-   ============================ */
 @media (max-width: 768px) {
-  .button-container {
-    width: 100%;
-    max-width: 90%;
-  }
-}
+    .main-title {
+        font-size: 36px;
+    }
 
-@media (max-width: 480px) {
-  .header-banner {
-    padding: 20px 0 0;
-  }
-  .input-wrapper {
-    max-width: 90%;
-  }
-  .button-container {
-    flex-direction: column;
-    width: 100%;
-    gap: 15px;
-  }
-}
+    .section-title {
+        font-size: 24px;
+    }
 
-/* ============================
-   Accesibilidad: foco
-   ============================ */
-button:focus,
-input:focus {
-  outline: 3px solid var(--color-button);
-  outline-offset: 2px;
+    .button-container {
+        flex-direction: column;
+    }
+
+    .button-draw,
+    .button-clear {
+        width: 100%;
+    }
 }

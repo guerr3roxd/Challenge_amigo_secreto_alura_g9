@@ -1,42 +1,17 @@
-// Declaración del array para almacenar los nombres de amigos
 let amigos = [];
 
-// Función para cambiar tema
-function toggleTheme() {
-    const body = document.body;
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Actualizar el botón
-    updateThemeButton(newTheme);
-}
-
-// Función para actualizar el icono del botón
-function updateThemeButton(theme) {
-    const sunIcon = document.querySelector('.theme-icon.sun');
-    const moonIcon = document.querySelector('.theme-icon.moon');
-    
-    if (theme === 'dark') {
-        sunIcon.style.opacity = '1';
-        moonIcon.style.opacity = '0';
-    } else {
-        sunIcon.style.opacity = '0';
-        moonIcon.style.opacity = '1';
-    }
-}
-
-// Inicializar tema al cargar la página
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const theme = savedTheme || 'light';  // por defecto 'light'
+document.getElementById('theme-toggle').addEventListener('change', function(e) {
+    const theme = e.target.checked ? 'dark' : 'light';
     document.body.setAttribute('data-theme', theme);
-    updateThemeButton(theme);
+    localStorage.setItem('theme', theme);
+});
+
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.setAttribute('data-theme', savedTheme);
+    document.getElementById('theme-toggle').checked = savedTheme === 'dark';
 }
 
-// Función para agregar amigos a la lista
 function agregarAmigo() {
     const input = document.getElementById("amigo");
     const nombre = input.value.trim();
@@ -46,26 +21,21 @@ function agregarAmigo() {
         return;
     }
     
-    // Verificar si el nombre ya existe para evitar duplicados
     if (amigos.includes(nombre)) {
         alert("Este nombre ya está en la lista.");
         return;
     }
     
     amigos.push(nombre);
-
-    // Actualizar visualización de la lista
     actualizarLista();
-    // Limpiar el campo de entrada
     input.value = "";
 }
 
-// Función para actualizar visualmente la lista de amigos
 function actualizarLista() {
     const lista = document.getElementById("listaAmigos");
     lista.innerHTML = "";
     
-    amigos.forEach(function(amigo, indice) {
+    amigos.forEach((amigo, indice) => {
         const elemento = document.createElement("li");
         elemento.innerHTML = `
             <span class="nombre-amigo">${amigo}</span>
@@ -75,20 +45,17 @@ function actualizarLista() {
     });
 }
 
-// Función para eliminar un amigo específico de la lista
 function eliminarAmigo(indice) {
     const nombreEliminado = amigos[indice];
     amigos.splice(indice, 1);
     actualizarLista();
     
-    // Limpiar resultado si estaba mostrando el amigo eliminado
     const resultado = document.getElementById("resultado");
     if (resultado.innerHTML.includes(nombreEliminado)) {
         resultado.innerHTML = "";
     }
 }
 
-// Función para vaciar toda la lista de amigos
 function vaciarLista() {
     if (amigos.length === 0) {
         alert("La lista ya está vacía.");
@@ -104,7 +71,6 @@ function vaciarLista() {
     }
 }
 
-// Función para sortear un amigo al azar
 function sortearAmigo() {
     if (amigos.length === 0) {
         alert("No hay amigos para sortear.");
@@ -121,5 +87,4 @@ function sortearAmigo() {
     document.getElementById("resultado").innerHTML = `<li class="resultado-sorteo">🎉 ${sorteado} 🎉</li>`;
 }
 
-// Inicializar tema cuando se carga la página
 document.addEventListener('DOMContentLoaded', initTheme);
