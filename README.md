@@ -5,9 +5,6 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/camilafernanda/amigo-secreto?color=%2304D361">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/camilafernanda/amigo-secreto">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
   <img src="https://img.shields.io/badge/STATUS-EN%20DESARROLLO-green">
 </p>
 
@@ -31,14 +28,6 @@ La aplicación fue desarrollada como parte del programa educativo de **Alura Lat
 - `Sorteo aleatorio`: Selección aleatoria de un participante de la lista
 - `Interfaz responsiva`: Diseño adaptado para diferentes dispositivos
 - `Limpieza automática`: Los campos se limpian automáticamente después de cada acción
-
----
-
-## 🎮 Demostración
-
-![Demostración del proyecto](./assets/demo-amigo-secreto.gif)
-
-*Ejemplo de uso: agregando participantes y realizando el sorteo*
 
 ---
 
@@ -110,6 +99,7 @@ amigo-secreto/
 - ✅ Verificación de campos vacíos
 - ✅ Validación de lista vacía antes del sorteo
 - ✅ Mensajes de error informativos
+- ✅ Validación de un minimo de 2 personas
 
 ---
 
@@ -122,19 +112,6 @@ Las contribuciones son siempre bienvenidas! Para contribuir:
 3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
 4. Push a la branch (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
-
----
-
-## 👨‍💻 Autores
-
-| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Tu Nombre</sub>](https://github.com/tu-usuario) |
-| :---: |
-
----
-
-## 📝 Licencia
-
-Este proyecto está bajo la licencia MIT. Vea el archivo [LICENSE](LICENSE) para más detalhes.
 
 ---
 
